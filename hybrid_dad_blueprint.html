@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101820">
+<title>Hybrid Dad Blueprint | Plan personal</title>
+<style>
+:root{--bg:#f3f5f4;--panel:#fff;--ink:#17232b;--muted:#64727b;--line:#e1e7e4;--accent:#b7f36b;--accent2:#dff8c2;--dark:#101820;--orange:#f4a261;--blue:#7ac7e8;--radius:18px;--shadow:0 8px 28px rgba(16,24,32,.06)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}
+.app{max-width:1440px;margin:auto;min-height:100vh;display:grid;grid-template-columns:248px minmax(0,1fr)}
+.sidebar{background:var(--dark);color:#f7faf8;padding:28px 18px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:28px}.brand{display:flex;align-items:center;gap:11px;padding:0 10px}.logo{width:38px;height:38px;background:var(--accent);color:var(--dark);display:grid;place-items:center;border-radius:12px;font-weight:900;font-size:20px}.brand strong{display:block;font-size:14px;letter-spacing:.06em}.brand small{color:#aab7bd;font-size:11px}.nav{display:grid;gap:7px}.nav button{border:0;background:transparent;color:#b7c1c5;text-align:left;padding:12px 13px;border-radius:12px;display:flex;align-items:center;gap:12px}.nav button.active,.nav button:hover{background:#26323a;color:#fff}.nav .ico{width:21px;text-align:center;font-size:17px}.sidebar-note{margin-top:auto;border:1px solid #354149;border-radius:15px;padding:15px;color:#c2cbcf;font-size:12px}.sidebar-note b{color:var(--accent);display:block;margin-bottom:6px}
+main{min-width:0;padding:28px clamp(16px,3vw,42px) 56px}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:27px}.eyebrow{font-size:11px;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}h1{font-size:clamp(26px,3vw,36px);letter-spacing:-.04em;line-height:1.1;margin:6px 0 0}.date-chip{border:1px solid var(--line);border-radius:999px;background:#fff;padding:9px 13px;color:var(--muted);font-size:12px;white-space:nowrap}
+.page{display:none}.page.active{display:block}.hero{background:var(--dark);color:white;border-radius:24px;padding:clamp(22px,3vw,34px);display:grid;grid-template-columns:1.5fr 1fr;gap:25px;align-items:center;overflow:hidden;position:relative}.hero:after{content:"";position:absolute;width:250px;height:250px;border:1px solid #39464d;border-radius:50%;right:-70px;top:-90px;box-shadow:0 0 0 28px #101820,0 0 0 29px #39464d,0 0 0 65px #101820,0 0 0 66px #39464d}.hero>*{position:relative;z-index:1}.hero .eyebrow{color:var(--accent)}.hero h2{font-size:clamp(25px,3vw,38px);line-height:1.1;letter-spacing:-.04em;margin:10px 0 12px;max-width:560px}.hero p{color:#c2cdd1;max-width:600px;margin:0}.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.hero-stat{background:#202b32;border:1px solid #334048;padding:15px;border-radius:15px}.hero-stat strong{font-size:25px;display:block;letter-spacing:-.04em}.hero-stat span{font-size:11px;color:#bdc8cc}.hero-stat em{font-style:normal;color:var(--accent);font-size:11px}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:28px 0 14px}.section-head h2{font-size:19px;letter-spacing:-.03em;margin:0}.section-head p{color:var(--muted);font-size:12px;margin:4px 0 0}.grid{display:grid;gap:14px}.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:19px;box-shadow:var(--shadow);min-width:0}.metric-label{font-size:12px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}.metric{font-size:28px;font-weight:800;letter-spacing:-.05em;margin:7px 0 2px}.metric-sub{font-size:11px;color:var(--muted)}.pill{display:inline-flex;align-items:center;border-radius:999px;padding:5px 9px;background:#eef4e8;font-size:11px;font-weight:750;color:#3e6021}.pill.dark{background:#26343a;color:#e5edf0}.pill.orange{background:#fff0e2;color:#97551d}.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}.day{border:1px solid var(--line);border-radius:14px;padding:12px 9px;background:#fff;min-height:118px}.day .dow{font-size:10px;color:var(--muted);font-weight:800;letter-spacing:.08em}.day strong{display:block;font-size:12px;margin:9px 0 7px;line-height:1.3}.day small{font-size:10px;color:var(--muted)}.day.training{background:#f4fbe9;border-color:#d6e8c0}.day.hybrid{background:#eaf6fb;border-color:#cde8f2}.day.rest{background:#fafafa}.card-title{display:flex;justify-content:space-between;gap:10px;align-items:start;margin-bottom:14px}.card-title h3{font-size:16px;margin:0;letter-spacing:-.02em}.card-title p{font-size:12px;color:var(--muted);margin:4px 0 0}.list{list-style:none;padding:0;margin:0;display:grid;gap:11px}.list li{display:flex;gap:10px;align-items:flex-start;font-size:13px}.check{flex:0 0 22px;width:22px;height:22px;border-radius:7px;background:var(--accent2);display:grid;place-items:center;font-size:12px;font-weight:900}.progress-track{height:7px;background:#edf0ed;border-radius:99px;overflow:hidden;margin:10px 0}.progress-track span{display:block;height:100%;background:#8fcf4b;border-radius:99px;transition:width .2s}.muted{color:var(--muted)}.small{font-size:12px}.btn{border:0;border-radius:11px;padding:10px 14px;background:var(--dark);color:#fff;font-size:12px;font-weight:750}.btn:hover{opacity:.88}.btn.secondary{background:#edf2ed;color:var(--ink);border:1px solid var(--line)}.btn.lime{background:var(--accent);color:var(--dark)}.btn-row{display:flex;gap:8px;flex-wrap:wrap}.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px}table{width:100%;border-collapse:collapse;font-size:12px;min-width:570px}th,td{padding:12px 13px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}th{background:#f7f9f7;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.07em}tr:last-child td{border-bottom:0}td strong{font-size:12px}input,select{border:1px solid #d8e0db;border-radius:9px;background:#fff;padding:8px;width:100%;min-width:64px;color:var(--ink)}input[type=checkbox]{width:17px;min-width:17px;accent-color:#7fb83d}.exercise{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:start}.exercise strong{display:block}.exercise small{color:var(--muted)}.workout-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}.workout-tabs button{border:1px solid var(--line);background:#fff;padding:9px 12px;border-radius:999px;font-size:12px;font-weight:750}.workout-tabs button.active{background:var(--dark);color:#fff;border-color:var(--dark)}.workout-meta{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:15px}.workout-block{margin-top:17px}.workout-block h4{margin:0 0 9px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}.exercise-list{display:grid;gap:10px}.exercise-item{border:1px solid var(--line);border-radius:13px;padding:12px}.exercise-item-top{display:flex;justify-content:space-between;gap:10px}.exercise-item-top strong{font-size:13px}.exercise-item-top small{display:block;color:var(--muted);font-size:11px;margin-top:3px}.fields{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:10px}.fields label{font-size:10px;color:var(--muted);display:grid;gap:4px}.fields input{font-size:12px;padding:7px;min-width:0}.food-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.meal{border:1px solid var(--line);border-radius:14px;padding:15px}.meal .time{font-size:11px;color:var(--muted);font-weight:750}.meal h3{font-size:14px;margin:6px 0}.meal p{font-size:12px;color:var(--muted);margin:0}.meal .tag{display:inline-block;margin-top:10px;font-size:10px;padding:4px 7px;border-radius:7px;background:#f1f5ed}.note{background:#f7faef;border:1px solid #e1ebd3;padding:14px 16px;border-radius:13px;font-size:12px;color:#46553c}.chart{width:100%;height:230px;display:block}.chart-legend{display:flex;gap:15px;flex-wrap:wrap;font-size:11px;color:var(--muted)}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#84bd45;margin-right:5px}.dot.blue{background:#6bb9db}.empty{padding:30px;text-align:center;color:var(--muted);font-size:13px}.footer{margin-top:30px;padding-top:17px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:11px}.mobile-nav{display:none}
+@media(max-width:1050px){.app{grid-template-columns:210px minmax(0,1fr)}.grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}.week{grid-template-columns:repeat(4,minmax(0,1fr))}.food-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.app{display:block}.sidebar{display:none}main{padding:20px 14px 90px}.topbar{margin-bottom:18px}.date-chip{display:none}.hero{grid-template-columns:1fr;padding:23px}.hero:after{right:-130px;top:-150px}.hero-stats{max-width:420px}.grid-3,.grid-2{grid-template-columns:1fr}.grid-4{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card{padding:15px}.metric{font-size:24px}.week{grid-template-columns:repeat(2,minmax(0,1fr))}.day{min-height:105px}.food-grid{grid-template-columns:1fr}.section-head{margin-top:23px}.mobile-nav{display:flex;position:fixed;z-index:20;bottom:0;left:0;right:0;background:rgba(16,24,32,.97);padding:8px 4px calc(8px + env(safe-area-inset-bottom));justify-content:space-around;gap:2px}.mobile-nav button{background:none;border:0;color:#bdc7cb;font-size:10px;display:grid;justify-items:center;gap:3px;padding:5px 7px}.mobile-nav button.active{color:var(--accent)}.mobile-nav span{font-size:18px}.fields{grid-template-columns:repeat(2,minmax(0,1fr))}.footer{flex-direction:column}.topbar h1{font-size:27px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">H</div><div><strong>HYBRID DAD</strong><small>BLUEPRINT · PERSONAL</small></div></div>
+  <nav class="nav" aria-label="Navegación principal">
+    <button class="active" data-page="inicio"><span class="ico">◫</span>Resumen</button>
+    <button data-page="entrenamiento"><span class="ico">↗</span>Entrenamiento</button>
+    <button data-page="nutricion"><span class="ico">◉</span>Nutrición</button>
+    <button data-page="progreso"><span class="ico">⌁</span>Progreso</button>
+    <button data-page="habitos"><span class="ico">✓</span>Hábitos y reglas</button>
+  </nav>
+  <div class="sidebar-note"><b>CONSTANCIA &gt; PERFECCIÓN</b>Registra cada sesión, progresa poco a poco y mantén el plan sostenible. Tus datos se guardan en este dispositivo.</div>
+</aside>
+<main>
+  <div class="topbar"><div><div class="eyebrow">Tu panel de rendimiento</div><h1 id="pageTitle">Resumen semanal</h1></div><div class="date-chip" id="today"></div></div>
+
+  <section class="page active" id="inicio">
+    <div class="hero"><div><div class="eyebrow">Fuerza · Motor · Composición corporal</div><h2>Construye un cuerpo fuerte, capaz y sostenible.</h2><p>Un sistema híbrido para perder grasa sin sacrificar masa muscular ni rendimiento. Entrena con intención, come suficiente proteína y acumula pasos.</p><div class="btn-row" style="margin-top:20px"><button class="btn lime" data-goto="entrenamiento">Registrar entrenamiento ↗</button><button class="btn secondary" data-goto="progreso">Ver progreso</button></div></div><div class="hero-stats"><div class="hero-stat"><strong>2.500–2.700</strong><span>kcal objetivo/día</span></div><div class="hero-stat"><strong>200 g</strong><span>proteína diaria</span></div><div class="hero-stat"><strong>3–4</strong><span>sesiones/semana</span></div><div class="hero-stat"><strong>8–10k</strong><span>pasos al día</span></div></div></div>
+    <div class="section-head"><div><h2>Indicadores clave</h2><p>Objetivos de partida y control semanal</p></div></div>
+    <div class="grid grid-4">
+      <div class="card"><div class="metric-label">Peso de referencia <span>⚖</span></div><div class="metric">100 kg</div><div class="metric-sub">Actualiza el peso en Progreso</div></div>
+      <div class="card"><div class="metric-label">Proteína <span>●</span></div><div class="metric">200 g</div><div class="metric-sub">Objetivo diario orientativo</div></div>
+      <div class="card"><div class="metric-label">Sesiones <span>↗</span></div><div class="metric" id="sessionCount">0/4</div><div class="metric-sub">Entrenamientos marcados esta semana</div><div class="progress-track"><span id="sessionBar" style="width:0%"></span></div></div>
+      <div class="card"><div class="metric-label">Hábitos <span>✓</span></div><div class="metric" id="habitCount">0/3</div><div class="metric-sub">Marca tus hábitos de hoy</div><div class="progress-track"><span id="habitBar" style="width:0%"></span></div></div>
+    </div>
+    <div class="section-head"><div><h2>Semana tipo</h2><p>Si solo tienes tres días, aplica la regla de rescate.</p></div><span class="pill">45 min fuerza · 30–40 min motor</span></div>
+    <div class="week">
+      <div class="day training"><div class="dow">LUNES</div><strong>Fuerza A</strong><small>Gimnasio · 45 min</small></div>
+      <div class="day training"><div class="dow">MARTES</div><strong>Motor / Engine</strong><small>Gimnasio · 30–40 min</small></div>
+      <div class="day rest"><div class="dow">MIÉRCOLES</div><strong>Descanso activo</strong><small>8.000+ pasos</small></div>
+      <div class="day training"><div class="dow">JUEVES</div><strong>Fuerza B</strong><small>Gimnasio · 45 min</small></div>
+      <div class="day rest"><div class="dow">VIERNES</div><strong>Descanso activo</strong><small>8.000+ pasos</small></div>
+      <div class="day hybrid"><div class="dow">SÁBADO</div><strong>Sesión híbrida</strong><small>Casa o gimnasio</small></div>
+      <div class="day rest"><div class="dow">DOMINGO</div><strong>Descanso total</strong><small>Tiempo en familia</small></div>
+    </div>
+    <div class="section-head"><div><h2>Enfoque de hoy</h2><p>Marca los hábitos que hayas completado; se reinician manualmente cada día.</p></div><button class="btn secondary" id="resetHabits">Reiniciar hábitos</button></div>
+    <div class="grid grid-3">
+      <div class="card"><div class="card-title"><h3>Movimiento</h3><span class="pill">8–10k pasos</span></div><label class="list"><li><input type="checkbox" class="habit" data-habit="steps"> He alcanzado mi objetivo de pasos</li></label></div>
+      <div class="card"><div class="card-title"><h3>Nutrición</h3><span class="pill">200 g proteína</span></div><label class="list"><li><input type="checkbox" class="habit" data-habit="protein"> He priorizado la proteína</li></label></div>
+      <div class="card"><div class="card-title"><h3>Recuperación</h3><span class="pill">Agua + descanso</span></div><label class="list"><li><input type="checkbox" class="habit" data-habit="recovery"> Hidratación y recuperación cuidadas</li></label></div>
+    </div>
+  </section>
+
+  <section class="page" id="entrenamiento">
+    <div class="section-head" style="margin-top:0"><div><h2>Plan de entrenamiento</h2><p>Selecciona una sesión y registra carga, repeticiones y RIR. Los datos se guardan automáticamente.</p></div><span class="pill">Doble progresión</span></div>
+    <div class="workout-tabs" id="workoutTabs">
+      <button class="active" data-workout="A">Día 1 · Fuerza A</button><button data-workout="M">Día 2 · Motor</button><button data-workout="B">Día 3 · Fuerza B</button><button data-workout="H">Día 4 · Híbrida</button>
+    </div>
+    <div id="workoutContent"></div>
+    <div class="note" style="margin-top:15px"><strong>RIR 1–2:</strong> termina cada serie de fuerza sintiendo que podrías hacer 1–2 repeticiones más con buena técnica. Las series de calentamiento no cuentan como series de trabajo.</div>
+    <div class="section-head"><div><h2>Calendario de la semana</h2><p>Marca las sesiones completadas para llevar el recuento.</p></div><button class="btn secondary" id="clearWeek">Desmarcar semana</button></div>
+    <div class="grid grid-2" id="sessionChecklist"></div>
+  </section>
+
+  <section class="page" id="nutricion">
+    <div class="section-head" style="margin-top:0"><div><h2>Nutrición para perder grasa</h2><p>Objetivos iniciales. Ajusta según la tendencia del peso, el hambre y el rendimiento.</p></div><span class="pill">Déficit moderado</span></div>
+    <div class="grid grid-3">
+      <div class="card"><div class="metric-label">Energía diaria</div><div class="metric">2.500–2.700</div><div class="metric-sub">kcal · rango objetivo</div></div>
+      <div class="card"><div class="metric-label">Proteína</div><div class="metric">200 g</div><div class="metric-sub">≈ 2 g/kg de peso actual</div></div>
+      <div class="card"><div class="metric-label">Mantenimiento estimado</div><div class="metric">3.000–3.200</div><div class="metric-sub">kcal/día · validar con datos reales</div></div>
+    </div>
+    <div class="section-head"><div><h2>Distribución alrededor del entrenamiento</h2><p>Entrenamiento a mediodía</p></div></div>
+    <div class="food-grid">
+      <div class="meal"><div class="time">10:30–11:00 · PRE-ENTRENO</div><h3>Carbohidratos + proteína</h3><p>Ejemplo: plátano y proteína whey, o tostadas con pavo/huevos. Mantén la comida ligera y fácil de digerir.</p><span class="tag">Energía para entrenar</span></div>
+      <div class="meal"><div class="time">13:30–14:00 · POST-ENTRENO</div><h3>Comida principal</h3><p>Pollo, ternera o pescado; arroz, pasta o patatas; y una ración generosa de vegetales. Prioriza proteína y carbohidratos para recuperar.</p><span class="tag">Recuperación</span></div>
+      <div class="meal"><div class="time">NOCHE · CENA</div><h3>Proteína + vegetales</h3><p>Incluye una buena ración de proteína y duplica los vegetales respecto a una guarnición pequeña. Ajusta los carbohidratos según el hambre y la actividad.</p><span class="tag">Saciedad</span></div>
+    </div>
+    <div class="section-head"><div><h2>Regla flexible 80/20</h2><p>Consistencia sin aislarte de la vida social.</p></div></div>
+    <div class="card"><div class="grid grid-2"><div><div class="metric">22 de 28</div><p class="muted small">Comidas semanales alineadas con el plan.</p></div><div><div class="metric">6 de 28</div><p class="muted small">Comidas flexibles para familia, eventos o vida social. No hace falta compensarlas saltándose comidas.</p></div></div><div class="progress-track"><span style="width:78.6%"></span></div><div class="small muted">La regla 80/20 es una guía práctica, no una obligación matemática.</div></div>
+    <div class="section-head"><div><h2>Hidratación y suplemento</h2><p>Lo básico antes de añadir más productos.</p></div></div>
+    <div class="grid grid-2">
+      <div class="card"><div class="card-title"><h3>Creatina monohidrato</h3><span class="pill">Diaria</span></div><div class="metric">5 g</div><p class="small muted">Una toma diaria, también en días de descanso. No es imprescindible tomarla justo antes de entrenar.</p></div>
+      <div class="card"><div class="card-title"><h3>Agua y electrolitos</h3><span class="pill">Individualizar</span></div><p class="small">Bebe agua a lo largo del día. Antes de entrenar, hidrátate; añade electrolitos si sudas mucho o la sesión/temperatura lo justifican. No añadas sal por rutina si tienes restricciones médicas de sodio.</p></div>
+    </div>
+    <div class="note" style="margin-top:15px">El menú mostrado son ejemplos de estructura, no un menú semanal pesado en gramos. Las calorías y el mantenimiento son estimaciones iniciales: revisa el promedio de peso durante 2–3 semanas y ajusta en pequeños pasos.</div>
+  </section>
+
+  <section class="page" id="progreso">
+    <div class="section-head" style="margin-top:0"><div><h2>Seguimiento y progresión</h2><p>Registra peso corporal y métricas de entrenamiento para observar tendencias.</p></div><button class="btn secondary" id="exportData">Exportar CSV</button></div>
+    <div class="grid grid-2">
+      <div class="card"><div class="card-title"><h3>Registrar peso corporal</h3><span class="pill">kg</span></div><form id="weightForm" class="grid" style="grid-template-columns:1fr 1fr;align-items:end"><label class="small muted">Fecha<input id="weightDate" type="date" required></label><label class="small muted">Peso (kg)<input id="weightValue" type="number" min="30" max="300" step=".1" placeholder="100.0" required></label><button class="btn lime" style="grid-column:1/-1">Guardar peso</button></form><div id="weightHistory" class="small muted" style="margin-top:12px"></div></div>
+      <div class="card"><div class="card-title"><h3>Progresión de carga</h3><span class="pill">Registro</span></div><p class="small muted">Usa la sección Entrenamiento para guardar el peso, las repeticiones y el RIR de cada ejercicio. El historial aparece aquí.</p><div id="liftSummary" class="small"></div></div>
+    </div>
+    <div class="section-head"><div><h2>Tendencia de peso</h2><p>La tendencia importa más que una medición aislada.</p></div></div>
+    <div class="card"><canvas id="weightChart" class="chart" aria-label="Gráfica de peso corporal"></canvas><div class="chart-legend"><span><i class="dot"></i>Peso registrado</span></div><div id="chartEmpty" class="empty">Añade al menos un registro de peso para visualizar la gráfica.</div></div>
+    <div class="section-head"><div><h2>Regla de doble progresión</h2></div></div>
+    <div class="grid grid-3">
+      <div class="card"><div class="check">1</div><h3 style="font-size:14px">Completa el rango</h3><p class="small muted">Trabaja dentro del rango prescrito manteniendo técnica y RIR 1–2.</p></div>
+      <div class="card"><div class="check">2</div><h3 style="font-size:14px">Alcanza el techo</h3><p class="small muted">Cuando completes el máximo de repeticiones en las dos series de trabajo, sube la carga la siguiente semana.</p></div>
+      <div class="card"><div class="check">3</div><h3 style="font-size:14px">Sube y reinicia</h3><p class="small muted">Referencia inicial: +2,5 kg en torso y +5 kg en piernas. Vuelve al límite inferior del rango.</p></div>
+    </div>
+  </section>
+
+  <section class="page" id="habitos">
+    <div class="section-head" style="margin-top:0"><div><h2>Hábitos y reglas operativas</h2><p>Las pequeñas decisiones repetidas sostienen el progreso.</p></div></div>
+    <div class="grid grid-2">
+      <div class="card"><div class="card-title"><h3>Si entrenas 4 días</h3><span class="pill">Semana estándar</span></div><ul class="list"><li><span class="check">1</span><span><strong>Lunes:</strong> Fuerza A</span></li><li><span class="check">2</span><span><strong>Martes:</strong> Motor / acondicionamiento</span></li><li><span class="check">3</span><span><strong>Jueves:</strong> Fuerza B</span></li><li><span class="check">4</span><span><strong>Sábado:</strong> Sesión híbrida</span></li></ul></div>
+      <div class="card"><div class="card-title"><h3>Si solo entrenas 3 días</h3><span class="pill orange">Regla de rescate</span></div><ul class="list"><li><span class="check">1</span><span><strong>Lunes:</strong> Fuerza A</span></li><li><span class="check">2</span><span><strong>Miércoles:</strong> Fuerza B</span></li><li><span class="check">3</span><span><strong>Sábado:</strong> Sesión híbrida</span></li><li><span class="check">!</span><span>Elimina el día de Motor y amplía el bloque final de A y B hasta 15 minutos, siempre que la recuperación lo permita.</span></li></ul></div>
+      <div class="card"><div class="card-title"><h3>Actividad diaria</h3><span class="pill">NEAT</span></div><div class="metric">8.000–10.000</div><p class="small muted">Pasos diarios como objetivo medio. En días complicados, prioriza la regularidad antes que compensar con cardio intenso.</p></div>
+      <div class="card"><div class="card-title"><h3>Material para casa</h3><span class="pill">Sábado</span></div><ul class="list"><li><span class="check">✓</span><span>Kettlebell de 24 kg</span></li><li><span class="check">✓</span><span>Mancuernas de 10 kg</span></li><li><span class="check">✓</span><span>Clubbell de 9 kg</span></li></ul></div>
+    </div>
+    <div class="section-head"><div><h2>Notas de seguridad y ajuste</h2></div></div>
+    <div class="note">La programación es una plantilla inicial, no una evaluación clínica. Ajusta o sustituye movimientos que provoquen dolor, mantén una técnica sólida y evita convertir cada sesión en un test máximo. Si hay lesión activa o síntomas persistentes, adapta la carga con un profesional. La pérdida de peso debe valorarse por promedios semanales y rendimiento, no por un único día.</div>
+  </section>
+  <div class="footer"><span>HYBRID DAD BLUEPRINT · Panel personal</span><span>Datos guardados localmente en este navegador · No se envían a ningún servidor</span></div>
+</main>
+</div>
+<nav class="mobile-nav" aria-label="Navegación móvil"><button class="active" data-page="inicio"><span>◫</span>Resumen</button><button data-page="entrenamiento"><span>↗</span>Entrenar</button><button data-page="nutricion"><span>◉</span>Nutrición</button><button data-page="progreso"><span>⌁</span>Progreso</button><button data-page="habitos"><span>✓</span>Hábitos</button></nav>
+<script>
+const KEY='hybridDadBlueprintV1';
+const defaultData={weights:[],logs:{},sessions:{},habits:{},weekOffset:0};
+let data;
+try{data={...defaultData,...JSON.parse(localStorage.getItem(KEY)||'{}')};}catch(e){data={...defaultData};}
+function save(){localStorage.setItem(KEY,JSON.stringify(data));updateDashboard();renderProgress();}
+const workouts={
+ A:{name:'Fuerza A',place:'Gimnasio comercial',duration:'45 min',blocks:[
+  {title:'0:00–5:00 · Calentamiento',text:'2 min de bici suave + 10 sentadillas libres + 10 flexiones + 10 band pull-aparts + movilidad de cadera.'},
+  {title:'5:00–25:00 · Fuerza · RIR 1–2',items:[
+   ['Sentadilla trasera con barra','2 series de calentamiento + 2×6–8','Piernas','2–3 min'],
+   ['Press banca con mancuernas','1 serie de calentamiento + 2×8–10','Torso · superserie con remo','Superserie'],
+   ['Remo apoyado en pecho','1 serie de calentamiento + 2×10–12','Torso · superserie con press','Superserie'],
+   ['Sentadilla búlgara con mancuernas','1 serie de calentamiento + 2×8 por pierna','Piernas · superserie con face pulls','Superserie'],
+   ['Face pulls en polea','1 serie de calentamiento + 2×15','Hombro/espalda · superserie','Superserie']]},
+  {title:'25:00–40:00 · Motor',text:'Bici ergométrica o remo: 40 s fuerte / 20 s suave × 12 rondas (12 min). En semanas de 3 días, extiende el bloque hasta 15 min si recuperas bien.'},
+  {title:'40:00–45:00 · Core y transporte',items:[['Farmer’s walk','2×40 m pesado','Transporte de carga','Alterna con dead bug'],['Dead bug','2×10 por lado','Core','Alterna con farmer’s walk']]}]},
+ M:{name:'Motor / Engine',place:'Gimnasio comercial',duration:'30–40 min',blocks:[
+  {title:'Calentamiento · 5 min',text:'Trote o bici suave, aumentando gradualmente el ritmo.'},
+  {title:'Bloque principal · 24 min',text:'Bici o remo: 1 min a ritmo duro (no puedes mantener una conversación) + 2 min suaves × 8 rondas. Controla el esfuerzo: duro no significa sprint máximo.'},
+  {title:'Enfriamiento · 4 min',text:'Caminata o pedaleo suave. Total aproximado: 33 min.'}]},
+ B:{name:'Fuerza B',place:'Gimnasio comercial',duration:'45 min',blocks:[
+  {title:'0:00–5:00 · Calentamiento',text:'2 min de bici suave + 10 sentadillas libres + 10 flexiones + 10 band pull-aparts + movilidad de cadera.'},
+  {title:'5:00–25:00 · Fuerza · RIR 1–2',items:[
+   ['Trap bar deadlift / peso muerto convencional','2 series de calentamiento + 2×5','Bisagra de cadera','2–3 min'],
+   ['Press militar de pie con barra','1 serie de calentamiento + 2×6–8','Torso · superserie con tirón','Superserie'],
+   ['Dominadas o jalón al pecho','1 serie de calentamiento + 2×6–10','Espalda · superserie con press','Superserie'],
+   ['Hip thrust con barra','1 serie de calentamiento + 2×8–10','Glúteo · superserie con abdomen','Superserie'],
+   ['Elevaciones de rodillas colgado','1 serie de calentamiento + 2×10–15','Abdomen · superserie','Superserie']]},
+  {title:'25:00–40:00 · Motor',text:'Remo o bici: 30 s duro / 30 s suave × 8–12 rondas. Regula el volumen para mantener calidad y recuperación.'},
+  {title:'40:00–45:00 · Core y transporte',items:[['Suitcase carry (maletín)','2×20 m por lado','Una sola mano','Alterna con plancha'],['Plancha abdominal','2×45 s','Core','Alterna con suitcase carry']]}]},
+ H:{name:'Sesión híbrida',place:'Casa o gimnasio',duration:'45 min',blocks:[
+  {title:'0:00–5:00 · Calentamiento',text:'Cuerda o trote suave + movilidad activa.'},
+  {title:'5:00–25:00 · Superseries de fuerza',items:[
+   ['Sentadilla goblet · KB 24 kg','1 serie de calentamiento + 3×8–10','Superserie 1','90 s descanso tras pareja'],
+   ['Remo a una mano · KB/mancuerna','3×10 por lado','Superserie 1','90 s descanso tras pareja'],
+   ['Push press · mancuernas 10 kg','1 serie de calentamiento + 3×10–12','Superserie 2','Controla la técnica'],
+   ['Peso muerto rumano · KB 24 kg/mancuernas','3×10–12','Superserie 2','Controla la técnica']]},
+  {title:'25:00–40:00 · Metcon por tiempo',text:'Objetivo: 5 rondas de 15 swings con KB 24 kg + 12 flexiones + 12 sentadillas goblet + 200 m carrera suave. Alternativa: 60 s de cuerda o clubbell swipes. Descansa hasta 90 s entre rondas y prioriza la técnica.'},
+  {title:'40:00–45:00 · Transporte de carga',items:[['Farmer’s walk asimétrico','3×40 m','KB 24 kg en una mano + mancuerna en la otra','Alterna manos']]}]}
+};
+let selected='A';
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function renderWorkout(){
+ const w=workouts[selected],root=document.getElementById('workoutContent');
+ document.querySelectorAll('[data-workout]').forEach(b=>b.classList.toggle('active',b.dataset.workout===selected));
+ let html=`<div class="card"><div class="card-title"><div><h3>${w.name}</h3><p>${w.place}</p></div><span class="pill">${w.duration}</span></div><div class="workout-meta"><span class="pill dark">RIR 1–2 en fuerza</span><span class="pill">Registra series de trabajo</span></div>`;
+ w.blocks.forEach((block,bi)=>{html+=`<div class="workout-block"><h4>${block.title}</h4>`;
+ if(block.text)html+=`<p class="small">${esc(block.text)}</p>`;
+ if(block.items){html+='<div class="exercise-list">';block.items.forEach((it,ii)=>{const id=`${selected}-${bi}-${ii}`,log=data.logs[id]||{};html+=`<div class="exercise-item"><div class="exercise-item-top"><div><strong>${esc(it[0])}</strong><small>${esc(it[1])} · ${esc(it[2])}</small></div><span class="pill">${esc(it[3])}</span></div><div class="fields"><label>Carga (kg)<input type="number" step="0.5" min="0" data-log="${id}" data-field="weight" value="${log.weight??''}" placeholder="kg"></label><label>Reps logradas<input type="text" data-log="${id}" data-field="reps" value="${esc(log.reps??'')}" placeholder="8, 8"></label><label>RIR final<input type="number" min="0" max="10" step="1" data-log="${id}" data-field="rir" value="${log.rir??''}" placeholder="1–2"></label><label>Completado<input type="checkbox" data-log="${id}" data-field="done" ${log.done?'checked':''} style="margin-top:8px"></label></div></div>`});html+='</div>'}
+ html+='</div>'});
+ html+=`<div class="btn-row" style="margin-top:20px"><button class="btn lime" id="completeWorkout">Marcar sesión completada</button><button class="btn secondary" id="clearWorkout">Limpiar registros de esta sesión</button></div></div>`;
+ root.innerHTML=html;
+ root.querySelectorAll('[data-log]').forEach(el=>el.addEventListener('change',()=>{const id=el.dataset.log,field=el.dataset.field;data.logs[id]??={};data.logs[id][field]=field==='done'?el.checked:el.value;save();}));
+ document.getElementById('completeWorkout').addEventListener('click',()=>{data.sessions[selected]=true;save();renderSessionChecklist();document.getElementById('completeWorkout').textContent='✓ Sesión completada';});
+ document.getElementById('clearWorkout').addEventListener('click',()=>{if(confirm('¿Borrar los registros de esta sesión?')){Object.keys(data.logs).filter(k=>k.startsWith(selected+'-')).forEach(k=>delete data.logs[k]);save();renderWorkout();}});
+}
+document.querySelectorAll('[data-workout]').forEach(b=>b.addEventListener('click',()=>{selected=b.dataset.workout;renderWorkout()}));
+function renderSessionChecklist(){
+ const items=[['A','Lunes · Fuerza A'],['M','Martes · Motor'],['B','Jueves · Fuerza B'],['H','Sábado · Híbrida']];
+ document.getElementById('sessionChecklist').innerHTML=items.map(([id,label])=>`<div class="card" style="padding:14px;display:flex;justify-content:space-between;align-items:center;gap:10px"><strong style="font-size:13px">${label}</strong><label class="small muted" style="display:flex;align-items:center;gap:8px"><input type="checkbox" data-session="${id}" ${data.sessions[id]?'checked':''}> Hecha</label></div>`).join('');
+ document.querySelectorAll('[data-session]').forEach(el=>el.addEventListener('change',()=>{data.sessions[el.dataset.session]=el.checked;save()}));
+}
+function updateDashboard(){
+ const count=Object.values(data.sessions).filter(Boolean).length;
+ document.getElementById('sessionCount').textContent=`${count}/4`;document.getElementById('sessionBar').style.width=(count/4*100)+'%';
+ const hs=Object.values(data.habits).filter(Boolean).length;document.getElementById('habitCount').textContent=`${hs}/3`;document.getElementById('habitBar').style.width=(hs/3*100)+'%';
+ document.querySelectorAll('.habit').forEach(el=>el.checked=!!data.habits[el.dataset.habit]);
+}
+document.querySelectorAll('.habit').forEach(el=>el.addEventListener('change',()=>{data.habits[el.dataset.habit]=el.checked;save()}));
+document.getElementById('resetHabits').addEventListener('click',()=>{data.habits={};save()});
+document.getElementById('clearWeek').addEventListener('click',()=>{data.sessions={};save();renderSessionChecklist()});
+function showPage(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));
+ document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===id));
+ const titles={inicio:'Resumen semanal',entrenamiento:'Entrenamiento',nutricion:'Nutrición',progreso:'Progreso',habitos:'Hábitos y reglas'};
+ document.getElementById('pageTitle').textContent=titles[id]||'Panel';
+ window.scrollTo({top:0,behavior:'smooth'});
+ if(id==='progreso')renderProgress();
+}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+document.querySelectorAll('[data-goto]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.goto)));
+document.getElementById('today').textContent=new Intl.DateTimeFormat('es-ES',{weekday:'short',day:'numeric',month:'short',year:'numeric'}).format(new Date());
+document.getElementById('weightDate').value=new Date().toISOString().slice(0,10);
+document.getElementById('weightForm').addEventListener('submit',e=>{e.preventDefault();const entry={date:document.getElementById('weightDate').value,weight:Number(document.getElementById('weightValue').value)};if(!entry.date||!entry.weight)return;data.weights=data.weights.filter(x=>x.date!==entry.date);data.weights.push(entry);data.weights.sort((a,b)=>a.date.localeCompare(b.date));save();document.getElementById('weightValue').value='';});
+function renderProgress(){
+ const hist=document.getElementById('weightHistory');if(!hist)return;
+ const sorted=[...data.weights].sort((a,b)=>b.date.localeCompare(a.date));
+ hist.innerHTML=sorted.length?'<strong>Últimos registros</strong><br>'+sorted.slice(0,5).map(x=>`${esc(x.date)} — <strong>${x.weight.toFixed(1)} kg</strong>`).join('<br>'):'Todavía no hay registros de peso.';
+ const summaries=Object.entries(data.logs).filter(([k,v])=>v.weight!==undefined&&v.weight!==''&&(v.reps||v.done)).slice(-8);
+ document.getElementById('liftSummary').innerHTML=summaries.length?summaries.map(([k,v])=>`<div style="padding:7px 0;border-bottom:1px solid var(--line)"><strong>${esc(workouts[k.split('-')[0]]?.name||'Ejercicio')}</strong><br><span class="muted">${esc(k)} · ${esc(v.weight||'—')} kg · ${esc(v.reps||'—')} reps · RIR ${esc(v.rir||'—')}</span></div>`).join(''):'No hay registros de cargas todavía.';
+ drawChart();
+}
+function drawChart(){
+ const canvas=document.getElementById('weightChart'),empty=document.getElementById('chartEmpty');if(!canvas)return;
+ const pts=[...data.weights].sort((a,b)=>a.date.localeCompare(b.date));empty.style.display=pts.length?'none':'block';canvas.style.display=pts.length?'block':'none';if(!pts.length)return;
+ const dpr=window.devicePixelRatio||1,rect=canvas.getBoundingClientRect();canvas.width=rect.width*dpr;canvas.height=230*dpr;const c=canvas.getContext('2d');c.scale(dpr,dpr);
+ const W=rect.width,H=230,p={l:38,r:15,t:18,b:35},min=Math.min(...pts.map(x=>x.weight))-1,max=Math.max(...pts.map(x=>x.weight))+1,span=Math.max(2,max-min);
+ const x=i=>p.l+(W-p.l-p.r)*(pts.length===1?.5:i/(pts.length-1)),y=v=>p.t+(H-p.t-p.b)*(1-(v-min)/span);
+ c.clearRect(0,0,W,H);c.font='11px system-ui';c.fillStyle='#64727b';c.strokeStyle='#e1e7e4';c.lineWidth=1;
+ for(let i=0;i<5;i++){let v=min+span*i/4,yy=y(v);c.beginPath();c.moveTo(p.l,yy);c.lineTo(W-p.r,yy);c.stroke();c.fillText(v.toFixed(1),2,yy+4)}
+ c.strokeStyle='#84bd45';c.lineWidth=2.5;c.beginPath();pts.forEach((pt,i)=>i?c.lineTo(x(i),y(pt.weight)):c.moveTo(x(i),y(pt.weight)));c.stroke();
+ pts.forEach((pt,i)=>{c.fillStyle='#84bd45';c.beginPath();c.arc(x(i),y(pt.weight),4,0,Math.PI*2);c.fill();if(pts.length<=10||i===0||i===pts.length-1){c.fillStyle='#64727b';c.fillText(pt.date.slice(5),x(i)-16,H-10)}});
+}
+window.addEventListener('resize',()=>{if(document.getElementById('progreso').classList.contains('active'))drawChart()});
+document.getElementById('exportData').addEventListener('click',()=>{const rows=[['tipo','fecha','ejercicio_id','peso_kg','repeticiones','RIR','completado']];
+data.weights.forEach(w=>rows.push(['peso_corporal',w.date,'',w.weight,'','','']));
+Object.entries(data.logs).forEach(([id,v])=>rows.push(['entrenamiento','',id,v.weight??'',v.reps??'',v.rir??'',v.done?'sí':'no']));
+const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(';')).join('\r\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='hybrid-dad-progreso.csv';a.click();URL.revokeObjectURL(url)});
+renderWorkout();renderSessionChecklist();updateDashboard();renderProgress();
+</script>
+</body>
+</html>
